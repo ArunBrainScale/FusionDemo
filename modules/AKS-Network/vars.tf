@@ -35,3 +35,11 @@
   variable "pendpoint_cidr" {
     description = "private endpoint subnet cidr"
   }
+
+  variable "appgw_subnetname" {
+    default = "appgw-Subnet"
+  }
+
+  variable "appgw_cidr" {
+    description = "private endpoint subnet cidr"
+  }

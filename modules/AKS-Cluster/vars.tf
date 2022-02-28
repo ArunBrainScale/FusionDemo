@@ -91,3 +91,11 @@ variable "service_principal_client_id" {
     description = "name of the vnet that this subnet will belong to"
     default = "AKS-vnet"
   }
+
+  variable "appgw_subnetname" {
+    default = "appgw-Subnet"
+  }
+
+  variable "appgw_cidr" {
+    description = "private endpoint subnet cidr"
+  }
