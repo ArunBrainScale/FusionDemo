@@ -11,6 +11,8 @@
     subnet_cidr            = var.subnet_cidr
     pendpoint_subnetname   = var.pendpoint_subnetname
     pendpoint_cidr         = var.pendpoint_cidr
+    appgw_subnetname       = var.appgw_subnetname
+    appgw_cidr             = var.appgw_cidr
     location               = var.location
     address_space          = var.address_space
     network_security_group_name = var.network_security_group_name
