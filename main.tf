@@ -85,19 +85,18 @@
   }
 
   
-  module "nginx-ingress" {
-    source = "./modules/nginx-ingress"
-    resource_group_name = azurerm_resource_group.aks.name
-    cluster_name = var.cluster_name
-    depends_on = [module.aks-cluster]
-  }
+#  module "nginx-ingress" {
+#    source = "./modules/nginx-ingress"
+#    resource_group_name = azurerm_resource_group.aks.name
+#    cluster_name = var.cluster_name
+#    depends_on = [module.aks-cluster]
+#  }
 
   module "argo" {
     source = "./modules/ArgoCD"
     resource_group_name = azurerm_resource_group.aks.name
     cluster_name = var.cluster_name
     depends_on = [
-      module.aks-cluster,
-      module.nginx-ingress
+      module.aks-cluster
       ]
   }

@@ -1,11 +1,12 @@
 
 data "azurerm_subscription" "current" {}
-#data "azurerm_subnet" "appgw" {
+
+data "azurerm_subnet" "appgw" {
   #id = var.appgw_subnetid
-#  name = var.appgwsubnetname
-#  resource_group_name = var.resource_group
-#  virtual_network_name = var.vnet_name
-#}
+  name = var.appgw_subnetname
+  resource_group_name = var.resource_group
+  virtual_network_name = var.vnet_name
+}
 
   resource "azurerm_kubernetes_cluster" "cluster" {
     name = var.cluster_name
@@ -33,13 +34,13 @@ data "azurerm_subscription" "current" {}
       type = "SystemAssigned"
     }
 
-    #addon_profile {
-    #  ingress_application_gateway {
-    #    enabled = true
+    addon_profile {
+      ingress_application_gateway {
+        enabled = true
         #subnet_cidr = var.appgwsubnet_cidr
-    #    subnet_id = data.azurerm_subnet.appgw.id
-    #  }
-    #}
+        subnet_id = data.azurerm_subnet.appgw.id
+      }
+    }
 
     network_profile {
       network_plugin = var.network_plugin
