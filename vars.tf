@@ -92,7 +92,7 @@
   }
 
   variable "acr_name" {
-  default = "demoupdatedacr"
+  default = "fusiondemo"
   description = "ACR name"
  }
 

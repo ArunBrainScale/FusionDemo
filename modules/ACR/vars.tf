@@ -3,7 +3,7 @@ variable "location" {
 }
 
 variable "resource_group" {
-  default = "AKS_updated"
+  default = "AKS_Fusion"
 }
 
 variable "acr_name" {
