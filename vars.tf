@@ -1,12 +1,12 @@
 
   variable "cluster_name" {
     description = "Cluster Name"
-    default = "Demo-AKS_Updated"
+    default = "Demo-Fusion"
   }
 
   variable "resource_group" {
     description = "Resoruce Group Name"
-    default = "AKS_updated"
+    default = "AKS_Fusion"
   }
 
   variable "location" {
@@ -16,7 +16,7 @@
 
   variable "dns_prefix" {
     description = "DNS Prefix"
-    default = "Demo-AKSupdated"
+    default = "Demo-Fusion"
   }
 
   variable "api_server_authorized_ip_ranges" {
@@ -43,7 +43,7 @@
 
   variable "os_disk_size_gb" {
     description = "size of the OS disk to attach to the nodes"
-    default = "40"
+    default = "100"
   }
 
   variable "max_pods" {
