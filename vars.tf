@@ -58,7 +58,7 @@
   }
 
   variable "kubernetes_version" {
-    default = "1.20.9"
+    default = "1.22.6"
   }
 
   variable "subnet_name" {
