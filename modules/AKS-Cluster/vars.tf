@@ -95,7 +95,3 @@ variable "service_principal_client_id" {
   variable "appgw_subnetname" {
     default = "appgw-Subnet"
   }
-
-  variable "appgw_cidr" {
-    description = "private endpoint subnet cidr"
-  }
