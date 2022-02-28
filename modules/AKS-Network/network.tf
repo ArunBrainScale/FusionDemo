@@ -21,6 +21,13 @@
     enforce_private_link_service_network_policies = false
   }
 
+resource "azurerm_subnet" "appgw" {
+    name = var.appgw_subnetname
+    resource_group_name = var.resource_group_name
+    virtual_network_name = azurerm_virtual_network.network.name
+    address_prefixes = [var.appgw_cidr]
+  }
+
 
   resource "azurerm_network_security_group" "sg" {
     name                = var.network_security_group_name
