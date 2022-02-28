@@ -94,4 +94,14 @@
   variable "acr_name" {
   default = "demoupdatedacr"
   description = "ACR name"
-}
+ }
+
+  variable "appgw_cidr" {
+    description = "appgw subnet cidr"
+    default = "10.1.6.0/24"
+  }
+
+  variable "appgw_subnetname" {
+    description = "appgw subnet name"
+    default = "appgw-subnet"
+  }
