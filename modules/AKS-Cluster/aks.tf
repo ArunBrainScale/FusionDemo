@@ -60,6 +60,28 @@ data "azurerm_subnet" "appgw" {
     }
 
     #depends_on = [azuread_group.aks-aad-clusteradmins]
-
   }
+
+  resource "azurerm_kubernetes_cluster_node_pool" "additional_pools" {
+
+    for_each = var.additional_pools
+
+    kubernetes_cluster_id = azurerm_kubernetes_cluster.cluster.id
+    name = each.value.node_os == "Windows" ? substr(each.key, 0, 6) : substr(each.key, 0, 12)
+    orchestrator_version  = var.kubernetes_version
+    node_count            = each.value.node_count
+    vm_size               = each.value.vm_size
+    availability_zones    = each.value.zones
+    max_pods              = 250
+    os_disk_size_gb       = 128
+    os_type               = each.value.node_os
+    vnet_subnet_id        = var.vnet_subnet_id
+    #node_labels           = each.value.labels
+    #node_taints           = each.value.taints
+    enable_auto_scaling   = each.value.cluster_auto_scaling
+    min_count             = each.value.cluster_auto_scaling_min_count
+    max_count             = each.value.cluster_auto_scaling_max_count
+    enable_node_public_ip = false
+
+ }
 

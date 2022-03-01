@@ -38,12 +38,34 @@
     vnet_subnet_id           = module.aks-network.aks_subnet_id
     service_principal_client_id     = ""
     service_principal_client_secret = ""
+    
+    additional_pools = {
+      
+      solrpool = {
+        node_count = 1
+        vm_size    = "Standard_DS2_v2"
+        zones      = ["1", "2"]
+        cluster_auto_scaling           = true
+        cluster_auto_scaling_min_count = 1
+        cluster_auto_scaling_max_count = 2
+        node_os = "Linux" 
+      }
+
+      analyticpool = {
+        node_count = 1
+        vm_size    = "Standard_DS2_v2"
+        zones      = ["1", "2"]
+        cluster_auto_scaling           = true
+        cluster_auto_scaling_min_count = 1
+        cluster_auto_scaling_max_count = 2
+        node_os = "Linux"
+      }
+    }
 
     depends_on = [
       module.acr,
       module.aks-network
     ]
-    
   }
 
   resource "azurerm_role_assignment" "resourcegroup_vnet" {

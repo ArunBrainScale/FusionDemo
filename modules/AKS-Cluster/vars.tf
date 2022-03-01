@@ -95,3 +95,18 @@ variable "service_principal_client_id" {
   variable "appgw_subnetname" {
     default = "appgw-Subnet"
   }
+
+  variable "additional_pools" {
+    type = map(object({
+      
+      node_count                     = number
+      vm_size                        = string
+      zones                          = list(string)
+      node_os                        = string
+      cluster_auto_scaling           = bool
+      cluster_auto_scaling_min_count = number
+      cluster_auto_scaling_max_count = number
+
+    }))
+    
+  }
