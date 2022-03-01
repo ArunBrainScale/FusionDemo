@@ -74,7 +74,7 @@
 
   variable "subnet_cidr" {
     description = "the subnet Address range"
-    default = "10.1.0.0/22"
+    default = "10.1.2.0/22"
   }
 
   variable "network_security_group_name" {
