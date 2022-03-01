@@ -39,7 +39,10 @@
     service_principal_client_id     = ""
     service_principal_client_secret = ""
 
-    depends_on = [module.acr]
+    depends_on = [
+      module.acr,
+      module.aks-network
+    ]
     
   }
 
