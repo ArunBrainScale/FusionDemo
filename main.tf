@@ -33,7 +33,7 @@
     resource_group           = azurerm_resource_group.aks.name
     node_count               = var.node_count
     os_disk_size_gb          = "40"
-    max_pods                 = "110"
+    max_pods                 = "50"
     vm_size                  = var.vm_size
     vnet_subnet_id           = module.aks-network.aks_subnet_id
     service_principal_client_id     = ""
