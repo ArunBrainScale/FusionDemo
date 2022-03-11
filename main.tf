@@ -41,24 +41,43 @@
     
     additional_pools = {
       
-      solrpool = {
-        node_count = 1
-        vm_size    = "Standard_DS2_v2"
+      defaultpool = {
+        node_count = 4
+        vm_size    = "standard_e4ds_v5"
         zones      = ["1", "2"]
         cluster_auto_scaling           = true
-        cluster_auto_scaling_min_count = 1
-        cluster_auto_scaling_max_count = 2
-        node_os = "Linux" 
+        cluster_auto_scaling_min_count = 4
+        cluster_auto_scaling_max_count = 6
+        node_os = "Linux"
+        labels = {
+          nodepool = "defaultnodepool"
+        } 
       }
 
       analyticpool = {
-        node_count = 1
-        vm_size    = "Standard_DS2_v2"
+        node_count = 3
+        vm_size    = "standard_e4ds_v5"
         zones      = ["1", "2"]
         cluster_auto_scaling           = true
-        cluster_auto_scaling_min_count = 1
-        cluster_auto_scaling_max_count = 2
+        cluster_auto_scaling_min_count = 3
+        cluster_auto_scaling_max_count = 5
         node_os = "Linux"
+        labels = {
+          nodepool = "analyticnodepool"
+        }
+      }
+
+      solrpool = {
+        node_count = 4
+        vm_size    = "Standard_D8ds_v5"
+        zones      = ["1", "2"]
+        cluster_auto_scaling           = true
+        cluster_auto_scaling_min_count = 4
+        cluster_auto_scaling_max_count = 6
+        node_os = "Linux"
+        labels = {
+          nodepool = "solrnodepool"
+        }
       }
     }
 
@@ -77,7 +96,7 @@
   #ACR Role assignment
 
   resource "azurerm_role_assignment" "acrpull" {
-    principal_id = module.aks-cluster.identity
+    principal_id = module.aks-cluster.kubeletIdentity
     scope = module.acr.acr_id
     role_definition_name = "AcrPull"
 

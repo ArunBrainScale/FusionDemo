@@ -29,7 +29,7 @@ variable "service_principal_client_id" {
   # Node Pool config
   variable "agent_pool_name" {
     description = "name for the agent pool profile"
-    default     = "demopool"
+    default     = "systempool"
   }
 
   variable "agent_pool_type" {
@@ -103,6 +103,7 @@ variable "service_principal_client_id" {
       vm_size                        = string
       zones                          = list(string)
       node_os                        = string
+      labels                         = map(string)
       cluster_auto_scaling           = bool
       cluster_auto_scaling_min_count = number
       cluster_auto_scaling_max_count = number

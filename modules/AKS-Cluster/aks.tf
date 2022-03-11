@@ -28,6 +28,7 @@ data "azurerm_subnet" "appgw" {
       max_count = 3
       min_count = 2
       availability_zones = [1,2]
+      only_critical_addons_enabled = true
     }
 
     identity {
@@ -52,7 +53,7 @@ data "azurerm_subnet" "appgw" {
 
     role_based_access_control {
       azure_active_directory {
-        admin_group_object_ids = ["cc673a7c-f67a-4700-84e0-b9ec9dbde268"]
+        admin_group_object_ids = ["bef56a5b-4170-4a3e-8487-4a066eafb82f"]
         tenant_id = data.azurerm_subscription.current.tenant_id
         managed = true
       }
@@ -72,11 +73,11 @@ data "azurerm_subnet" "appgw" {
     node_count            = each.value.node_count
     vm_size               = each.value.vm_size
     availability_zones    = each.value.zones
-    max_pods              = 250
+    max_pods              = 50
     os_disk_size_gb       = 128
     os_type               = each.value.node_os
     vnet_subnet_id        = var.vnet_subnet_id
-    #node_labels           = each.value.labels
+    node_labels           = each.value.labels
     #node_taints           = each.value.taints
     enable_auto_scaling   = each.value.cluster_auto_scaling
     min_count             = each.value.cluster_auto_scaling_min_count
