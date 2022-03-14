@@ -9,7 +9,7 @@ data "azurerm_subnet" "appgw" {
 }
 
 data "azuread_group" "admin_group" {
-  display_name = "lalitaksgroup"
+  display_name = "aks-rbac-aks-fusion"
 }
 
 
@@ -73,7 +73,7 @@ data "azuread_group" "admin_group" {
     for_each = var.additional_pools
 
     kubernetes_cluster_id = azurerm_kubernetes_cluster.cluster.id
-    name = each.value.node_os == "Windows" ? substr(each.key, 0, 6) : substr(each.key, 0, 12)
+    name = each.value.node_os == "Linux" ? substr(each.key, 0, 12) : substr(each.key, 0, 6)
     orchestrator_version  = var.kubernetes_version
     node_count            = each.value.node_count
     vm_size               = each.value.vm_size
@@ -88,6 +88,5 @@ data "azuread_group" "admin_group" {
     min_count             = each.value.cluster_auto_scaling_min_count
     max_count             = each.value.cluster_auto_scaling_max_count
     enable_node_public_ip = false
-
  }
 
