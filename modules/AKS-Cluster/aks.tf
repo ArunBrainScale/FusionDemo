@@ -88,5 +88,9 @@ data "azuread_group" "admin_group" {
     min_count             = each.value.cluster_auto_scaling_min_count
     max_count             = each.value.cluster_auto_scaling_max_count
     enable_node_public_ip = false
+
+    depends_on = [
+      azurerm_kubernetes_cluster.cluster
+    ]
  }
 
