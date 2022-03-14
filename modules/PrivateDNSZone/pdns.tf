@@ -7,8 +7,6 @@ resource "azurerm_private_dns_zone" "private_dns_zone" {
 
 resource "azurerm_private_dns_zone_virtual_network_link" "plink" {
 
-    #for_each = var.vnet_to_link
-
     name = "link_to_${lower("aks")}"
     resource_group_name = var.resource_group_name
     private_dns_zone_name = azurerm_private_dns_zone.private_dns_zone.name
