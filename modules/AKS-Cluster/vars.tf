@@ -1,10 +1,10 @@
-variable "service_principal_client_id" {
-    description = "The Client ID for the Service Principal"
-  }
+#variable "service_principal_client_id" {
+#    description = "The Client ID for the Service Principal"
+#  }
 
-  variable "service_principal_client_secret" {
-     description = "The Client Secret for the Service Principal"
-  }
+#  variable "service_principal_client_secret" {
+#     description = "The Client Secret for the Service Principal"
+#  }
 
   variable "cluster_name" {
      description = "Cluster Name"
@@ -21,10 +21,10 @@ variable "service_principal_client_id" {
     description = "DNS Prefix"
   }
 
-  variable "api_server_authorized_ip_ranges" {
-    description = "ip ranges to lock down access to kubernetes api server"
-    default     = "0.0.0.0/0"
-  }
+ # variable "api_server_authorized_ip_ranges" {
+ #   description = "ip ranges to lock down access to kubernetes api server"
+ #   default     = "0.0.0.0/0"
+ # }
 
   # Node Pool config
   variable "agent_pool_name" {
