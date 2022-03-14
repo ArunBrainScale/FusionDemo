@@ -36,8 +36,8 @@
     max_pods                 = "50"
     vm_size                  = var.vm_size
     vnet_subnet_id           = module.aks-network.aks_subnet_id
-    service_principal_client_id     = ""
-    service_principal_client_secret = ""
+    #service_principal_client_id     = ""
+    #service_principal_client_secret = ""
     
     additional_pools = {
       
