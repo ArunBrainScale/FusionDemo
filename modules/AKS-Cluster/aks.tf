@@ -8,6 +8,11 @@ data "azurerm_subnet" "appgw" {
   virtual_network_name = var.vnet_name
 }
 
+data "azuread_group" "admin_group" {
+  display_name = "lalitaksgroup"
+}
+
+
   resource "azurerm_kubernetes_cluster" "cluster" {
     name = var.cluster_name
     location = var.location
@@ -53,7 +58,7 @@ data "azurerm_subnet" "appgw" {
 
     role_based_access_control {
       azure_active_directory {
-        admin_group_object_ids = ["bef56a5b-4170-4a3e-8487-4a066eafb82f"]
+        admin_group_object_ids = [data.azuread_group.admin_group.object_id]
         tenant_id = data.azurerm_subscription.current.tenant_id
         managed = true
       }
