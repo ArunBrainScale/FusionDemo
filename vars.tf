@@ -19,10 +19,10 @@
     default = "Demo-Fusion"
   }
 
-  variable "api_server_authorized_ip_ranges" {
-    description = "ip ranges to lock down access to kubernetes api server"
-    default     = "0.0.0.0/0"
-  }
+  #variable "api_server_authorized_ip_ranges" {
+  #  description = "ip ranges to lock down access to kubernetes api server"
+  #  default     = "0.0.0.0/0"
+  #}
 
   # Node Pool config
 
